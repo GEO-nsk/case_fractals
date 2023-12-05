@@ -71,6 +71,7 @@ def eg_10(n, size):
 def ev_10(n, size):
     if n == 0:
         turtle.forward(size)
+
     else:
         ev_10(n - 1, size / 2)
         turtle.left(90)
@@ -84,6 +85,7 @@ def tree(n, size):
   if n == 0:
     turtle.forward(size)
     turtle.back(size)
+
   else:
     turtle.forward(size)
     turtle.right(30)
@@ -94,16 +96,68 @@ def tree(n, size):
     turtle.back(size)
 
 def koch_5(n, size):
+    if n == 0:
+        turtle.forward(size)
+
+    else:
+        koch_5(n - 1, size / 3)
     if n == 0:          
         turtle.forward(size)
     else:
-        koch_5(n - 1, size / 3)   
+        koch_5(n - 1, size / 3)
         turtle.left(60)
         koch_5(n - 1, size / 3)
         turtle.right(120)
         koch_5(n - 1, size / 3)
         turtle.left(60)
         koch_5(n - 1, size / 3)
+
+def ice_fractal_8(order, size):
+    if order == 0:
+        turtle.forward(size)
+
+    else:
+        ice_fractal_8(order-1, size/2)
+        turtle.left(120)
+        ice_fractal_8(order-1, size/4)
+        turtle.right(180)
+        ice_fractal_8(order-1, size/4)
+        turtle.left(120)
+        ice_fractal_8(order-1, size/4)
+        turtle.right(180)
+        ice_fractal_8(order - 1, size / 4)
+        turtle.left(120)
+        ice_fractal_8(order - 1, size / 2)
+
+def koch_4(order, size):
+    if order == 0:
+        turtle.forward(size)
+
+    else:
+        koch_4(order-1, size/3)
+        turtle.left(60)
+        koch_4(order-1, size/3)
+        turtle.right(120)
+        koch_4(order-1, size/3)
+        turtle.left(60)
+        koch_4(order-1, size/3)
+
+def kol_10(order, size):
+    if order == 0:
+        turtle.forward(size)
+
+    else:
+        kol_10(order-1, size/3)
+        turtle.left(90)
+        kol_10(order-1, size/3)
+        turtle.right(60)
+        kol_10(order-1, size/3)
+        turtle.right(60)
+        kol_10(order-1, size/3)
+        turtle.right(60)
+        kol_10(order - 1, size / 3)
+        turtle.left(90)
+        kol_10(order - 1, size / 3)
 
 
 fractal = str(input('выберите фрактал, из представленных ниже:\n'
@@ -114,6 +168,9 @@ fractal = str(input('выберите фрактал, из представле�
                     '5 - Свой фрактал (Евгений)\n'
                     '6 - Дерево\n'
                     '7 - Кривая Коха 5\n'
+                    '8 - Ледяной фрактал 8\n'
+                    '9 - Кривая Коха\n'
+                    '10 - Свой фрактал (Николай)\n'
                     ': '))
 n = int(input('Глубина рекурсии: '))
 size = int(input('Длина стороны: '))
@@ -167,6 +224,24 @@ if fractal == '7':
     for i in range(3):
         koch_5(n, size)
         turtle.right(120)
+
+if fractal == '8':
+    turtle.up()
+    turtle.goto(-400, 0)
+    turtle.down()
+    ice_fractal_8(n, size)
+
+if fractal == '9':
+    turtle.up()
+    turtle.goto(-400, 0)
+    turtle.down()
+    koch_4(n, size)
+
+if fractal == '10':
+    turtle.up()
+    turtle.goto(-400, 0)
+    turtle.down()
+    kol_10(n, size)
 
 
 turtle.done()
