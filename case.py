@@ -1,3 +1,8 @@
+'''
+Gagol Egor - 95
+Tarlo Evgeny - 95
+Karpenko Nikolay - 50
+'''
 import turtle
 
 def branch_3(n, size):
